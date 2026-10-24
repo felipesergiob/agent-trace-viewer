@@ -1,0 +1,119 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where([data-theme="dark"], [data-theme="dark"] *));
+
+:root,
+[data-theme="light"] {
+  color-scheme: light;
+  --bg: #f6f6f7;
+  --panel: #ffffff;
+  --panel-2: #f1f1f3;
+  --line: #e3e3e8;
+  --line-strong: #cfcfd6;
+  --fg: #17171c;
+  --muted: #5e5e6a;
+  --subtle: #8a8a96;
+  --accent: #4c46d8;
+  --accent-soft: #eeedfd;
+  --danger: #c42b2b;
+  --danger-soft: #fdf0f0;
+  --success: #1c7a3e;
+  --success-soft: #edf8f1;
+  --warn: #9a5b06;
+  --warn-soft: #fdf6e7;
+  --diff-add: #e6f6eb;
+  --diff-add-strong: #c9ecd4;
+  --diff-del: #fcebeb;
+  --diff-del-strong: #f6cfcf;
+}
+
+[data-theme="dark"] {
+  color-scheme: dark;
+  --bg: #0b0b0d;
+  --panel: #131316;
+  --panel-2: #1a1a1f;
+  --line: #27272e;
+  --line-strong: #383841;
+  --fg: #ececf0;
+  --muted: #a0a0ac;
+  --subtle: #6e6e7a;
+  --accent: #9a98ff;
+  --accent-soft: #1f1e3b;
+  --danger: #ff7b7b;
+  --danger-soft: #2b1314;
+  --success: #5fd38a;
+  --success-soft: #0f2518;
+  --warn: #f2bd55;
+  --warn-soft: #2a200b;
+  --diff-add: #0f2a1a;
+  --diff-add-strong: #164227;
+  --diff-del: #2e1415;
+  --diff-del-strong: #4a1d1f;
+}
+
+@theme inline {
+  --color-bg: var(--bg);
+  --color-panel: var(--panel);
+  --color-panel-2: var(--panel-2);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-fg: var(--fg);
+  --color-muted: var(--muted);
+  --color-subtle: var(--subtle);
+  --color-accent: var(--accent);
+  --color-accent-soft: var(--accent-soft);
+  --color-danger: var(--danger);
+  --color-danger-soft: var(--danger-soft);
+  --color-success: var(--success);
+  --color-success-soft: var(--success-soft);
+  --color-warn: var(--warn);
+  --color-warn-soft: var(--warn-soft);
+  --color-diff-add: var(--diff-add);
+  --color-diff-add-strong: var(--diff-add-strong);
+  --color-diff-del: var(--diff-del);
+  --color-diff-del-strong: var(--diff-del-strong);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, Menlo, monospace;
+}
+
+html,
+body {
+  background: var(--bg);
+  color: var(--fg);
+}
+
+body {
+  font-family: var(--font-sans);
+}
+
+::selection {
+  background: var(--accent-soft);
+}
+
+summary {
+  cursor: pointer;
+  list-style: none;
+}
+summary::-webkit-details-marker {
+  display: none;
+}
+
+@keyframes flash-target {
+  0% {
+    box-shadow: 0 0 0 2px var(--accent);
+  }
+  100% {
+    box-shadow: 0 0 0 2px transparent;
+  }
+}
+
+.flash-target {
+  animation: flash-target 1.6s ease-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .flash-target {
+    animation: none;
+    box-shadow: 0 0 0 2px var(--accent);
+  }
+}
